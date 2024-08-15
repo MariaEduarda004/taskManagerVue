@@ -8,7 +8,7 @@
       <label for="password" class="form-label">Password:</label>
       <input type="password" id="password" v-model="password" class="form-control" required />
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
   </form>
 </template>
 
@@ -29,5 +29,40 @@ export default {
 </script>
 
 <style scoped>
+.form-label {
+  font-weight: 500;
+  color: #555;
+}
 
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  border-color: #4a90e2;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #9013fe;
+  box-shadow: 0 4px 12px rgba(144, 19, 254, 0.3);
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 20px;
+}
 </style>

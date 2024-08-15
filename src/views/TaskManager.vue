@@ -4,26 +4,65 @@
       <div class="card-body">
         <h2 class="card-title text-center mb-4">Gerenciador de Tarefas</h2>
         <form @submit.prevent="addTask" class="mb-4">
-          <div class="input-group mb-3">
-            <input type="text" v-model="newTaskName" class="form-control" placeholder="Digite a nova tarefa" required />
-            <input type="date" v-model="newTaskDeadline" class="form-control" required />
+          <div class="mb-3">
+            <label for="input-title" class="form-label">Nova tarefa:</label>
+            <input 
+              type="text" 
+              id="input-title" 
+              v-model="newTaskName" 
+              class="form-control" 
+              placeholder="Digite a nova tarefa" 
+              required 
+            />
+          </div>
+          <div class="mb-3">
+            <label for="task-deadline" class="form-label">Prazo:</label>
+            <input 
+              type="date" 
+              id="task-deadline" 
+              v-model="newTaskDeadline" 
+              class="form-control" 
+              required 
+            />
+          </div>
+          <div class="d-grid">
             <button type="submit" class="btn btn-primary">Adicionar</button>
           </div>
         </form>
         <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center" v-for="task in tasks" :key="task.id">
+          <li 
+            class="list-group-item d-flex justify-content-between align-items-center" 
+            v-for="task in tasks" 
+            :key="task.id"
+          >
             <div>
-              <strong>
+              <strong class="task-title">
                 {{ task.name }}
-                <i v-if="task.completed" class="fas fa-check-circle text-success ms-2"></i>
+                <i 
+                  v-if="task.completed" 
+                  class="fas fa-check-circle text-success ms-2"
+                ></i>
               </strong><br>
-              Criada em: {{ formatDate(task.created) }}<br>
-              Prazo: {{ formatDate(task.deadline) }}<br>
-              {{ task.completed ? 'Concluída' : 'Pendente' }}
+              <span class="task-meta">
+                Criada em: {{ formatDate(task.created) }}<br>
+                Prazo: {{ formatDate(task.deadline) }}<br>
+                Status: <span :class="task.completed ? 'text-success' : 'text-warning'">{{ task.completed ? 'Concluída' : 'Pendente' }}</span>
+              </span>
             </div>
-            <div>
-              <button v-if="!task.completed" @click="completeTask(task.id)" class="btn btn-success btn-sm">Concluir</button>
-              <button @click="removeTask(task.id)" class="btn btn-danger btn-sm ms-2">Remover</button>
+            <div class="task-actions">
+              <button 
+                v-if="!task.completed" 
+                @click="completeTask(task.id)" 
+                class="btn btn-success btn-sm"
+              >
+                Concluir
+              </button>
+              <button 
+                @click="removeTask(task.id)" 
+                class="btn btn-danger btn-sm ms-2"
+              >
+                Remover
+              </button>
             </div>
           </li>
         </ul>
@@ -110,34 +149,97 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
 }
 
 .task-manager-card {
   width: 100%;
-  max-width: 600px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  padding: 20px;
 }
 
 .card-title {
   font-weight: bold;
   color: #333;
+  font-size: 1.6rem;
 }
 
-.input-group {
-  width: 100%;
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+.d-grid {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .list-group-item {
-  border-radius: 4px;
-  margin-bottom: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: relative;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.task-meta {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
 }
 
 .btn-sm {
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.8rem;
+  margin-top: 4px;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.btn-success {
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+
+.btn-success:hover {
+  background-color: #229954;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
 }
 </style>

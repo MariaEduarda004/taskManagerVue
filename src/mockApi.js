@@ -1,8 +1,8 @@
 export const mockApi = {
   users: [
-    { id: 1, name: 'Alice Johnson', email: 'teste@gmail.com', password: 'teste' },
-    { id: 2, name: 'Bob Smith', email: 'bob@example.com', password: 'password456' },
-    { id: 3, name: 'Charlie Brown', email: 'charlie@example.com', password: 'password789' }
+    { id: 1, name: 'Maria', email: 'teste@gmail.com', password: 'teste' },
+    { id: 2, name: 'Joao', email: 'joao@example.com', password: 'teste2' },
+    { id: 3, name: 'Lucia', email: 'lucia@example.com', password: 'teste3' }
   ],
 
   tasks: [

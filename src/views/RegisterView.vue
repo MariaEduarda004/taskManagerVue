@@ -2,9 +2,9 @@
   <div class="register-container">
     <div class="card register-card">
       <div class="card-body">
-        <h2 class="card-title text-center mb-4">Register</h2>
+        <h2 class="card-title text-center mb-4">Registrar</h2>
         <register-form @register="handleRegister" />
-        <router-link to="/" class="d-block text-center mt-3">Already have an account? Login</router-link>
+        <router-link to="/" class="d-block text-center mt-3 link-login">Já possui conta? Realize o login</router-link>
       </div>
     </div>
   </div>
@@ -24,12 +24,11 @@ export default {
       mockApi.register(credentials.name, credentials.email, credentials.password)
         .then(response => {
           console.log('Registration successful:', response);
-          // Optionally redirect to login or another page
           this.$router.push('/');
         })
         .catch(error => {
           console.error('Registration failed:', error);
-          alert('Registration failed: ' + error.message);
+          alert('Falha ao registrar: ' + error.message);
         });
     }
   }
@@ -42,28 +41,36 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #4a90e2, #9013fe);
 }
 
 .register-card {
   width: 100%;
   max-width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-title {
   font-weight: bold;
   color: #333;
+  font-size: 1.5rem;
 }
 
-a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-a:hover {
+.link-login {
+  color: #4a90e2;
   text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.link-login:hover {
+  color: #9013fe;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 </style>
