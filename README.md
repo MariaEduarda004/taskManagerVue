@@ -40,7 +40,7 @@ Este projeto é um gerenciador de tarefas simples desenvolvido com Vue.js, simul
 3. **Execute o projeto:**
 
    ```
-   npm run dev
+   npm run serve
 4. **Acesse a aplicação:**
 
 Abra seu navegador e vá para http://localhost:8080.
