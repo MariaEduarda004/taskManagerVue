@@ -30,7 +30,7 @@ Este projeto é um gerenciador de tarefas simples desenvolvido com Vue.js, simul
 
    ```
    git clone https://github.com/MariaEduarda004/taskManagerVue.git
-   cd agendador-tarefas
+   cd taskManagerVue
 
 2. **Instale as dependências:**
 
